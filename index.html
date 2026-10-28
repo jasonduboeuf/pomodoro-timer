@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pomodoro Timer</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="card">
+      <h1>Pomodoro</h1>
+
+      <nav class="modes" role="tablist" aria-label="Timer mode">
+        <button data-mode="focus" class="active" role="tab" aria-selected="true">Focus</button>
+        <button data-mode="short" role="tab" aria-selected="false">Short break</button>
+        <button data-mode="long" role="tab" aria-selected="false">Long break</button>
+      </nav>
+
+      <div class="ring" aria-hidden="true">
+        <svg viewBox="0 0 120 120">
+          <circle class="track" cx="60" cy="60" r="54" />
+          <circle class="progress" cx="60" cy="60" r="54" />
+        </svg>
+        <div class="time" id="time">25:00</div>
+      </div>
+      <p class="sr-only" aria-live="polite" id="announce"></p>
+
+      <div class="controls">
+        <button id="start" class="primary">Start</button>
+        <button id="reset">Reset</button>
+        <button id="skip" title="Skip to next session">Skip</button>
+      </div>
+
+      <p class="status">Completed today: <strong id="count">0</strong> pomodoros</p>
+
+      <details class="settings">
+        <summary>Settings</summary>
+        <label>Focus (min) <input type="number" id="len-focus" min="1" max="90" value="25" /></label>
+        <label>Short break (min) <input type="number" id="len-short" min="1" max="30" value="5" /></label>
+        <label>Long break (min) <input type="number" id="len-long" min="1" max="60" value="15" /></label>
+        <label>Long break every <input type="number" id="every" min="2" max="8" value="4" /> pomodoros</label>
+        <label class="row"><input type="checkbox" id="auto" /> Start next session automatically</label>
+        <label class="row"><input type="checkbox" id="sound" checked /> Sound at the end of a session</label>
+      </details>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
